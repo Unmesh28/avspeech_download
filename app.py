@@ -19,6 +19,9 @@ def devideArrayIntoChunks(lst, n) :
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
 
+def downloadVideos(arr):
+    print(arr)
+
 def downloadYouTube(youtube_link, youtube_id, path, start_segment, end_segment, downloadedYoutubeID):
 
     try:
@@ -110,5 +113,5 @@ with open(f"{dataset_file}", "r") as f:
 
 addNewFiles.close()
 
-def downloadVideos(arr):
+
     
