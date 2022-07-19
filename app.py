@@ -77,7 +77,7 @@ with open(f"{dataset_file}", "r") as f:
     reader = csv.reader(f, delimiter="\t")
     
     list = reader.values.tolist()
-    n = len(n)
+    n = len(list)
 
     seperateList = devideArrayIntoChunks(list, n)
 
