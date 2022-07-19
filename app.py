@@ -84,32 +84,32 @@ with open(f"{dataset_file}", "r") as f:
     for arr in seperateList:
         downloadVideos(arr)
     
-    for i, line in enumerate(reader):
+    # for i, line in enumerate(reader):
         
-        # youtube_link = f"https://www.youtube.com/watch?v={1Uf_F74fBns}"
-        if args.is_vn:
-            print(line[0])
-            channel, youtube_id, start_segment, end_segment = line[0].split(",")
-            output_id = os.path.join(dataset_out, channel)
-        else:
-            youtube_id, start_segment, end_segment, x, y = line[0].split(",")
-            output_id = os.path.join(dataset_out, youtube_id)
+    #     # youtube_link = f"https://www.youtube.com/watch?v={1Uf_F74fBns}"
+    #     if args.is_vn:
+    #         print(line[0])
+    #         channel, youtube_id, start_segment, end_segment = line[0].split(",")
+    #         output_id = os.path.join(dataset_out, channel)
+    #     else:
+    #         youtube_id, start_segment, end_segment, x, y = line[0].split(",")
+    #         output_id = os.path.join(dataset_out, youtube_id)
 
-        if youtube_id in downloadedYoutubeID:
-            print("file downloaded, so continue...")
-            continue
-        if not os.path.exists(output_id):
-            os.mkdir(output_id)
-        else:
-            if len(os.listdir(output_id)) > 0:
-                print(f'{youtube_id} is downloaded so continue')
-                continue
-        youtube_link = f"https://www.youtube.com/watch?v={youtube_id}"
-        status = downloadYouTube(youtube_link, youtube_id, output_id, start_segment, end_segment, addNewFiles)
-        if status == 0:
-            print(f'VideoUnavailable so delete {youtube_id}')
-            os.rmdir(output_id)
-        time.sleep(10)
+    #     if youtube_id in downloadedYoutubeID:
+    #         print("file downloaded, so continue...")
+    #         continue
+    #     if not os.path.exists(output_id):
+    #         os.mkdir(output_id)
+    #     else:
+    #         if len(os.listdir(output_id)) > 0:
+    #             print(f'{youtube_id} is downloaded so continue')
+    #             continue
+    #     youtube_link = f"https://www.youtube.com/watch?v={youtube_id}"
+    #     status = downloadYouTube(youtube_link, youtube_id, output_id, start_segment, end_segment, addNewFiles)
+    #     if status == 0:
+    #         print(f'VideoUnavailable so delete {youtube_id}')
+    #         os.rmdir(output_id)
+    #     time.sleep(10)
 
 addNewFiles.close()
 
