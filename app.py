@@ -22,39 +22,39 @@ def devideArrayIntoChunks(lst, n) :
 def downloadVideos(arr):
     print(arr)
 
-def downloadYouTube(youtube_link, youtube_id, path, start_segment, end_segment, downloadedYoutubeID):
+# def downloadYouTube(youtube_link, youtube_id, path, start_segment, end_segment, downloadedYoutubeID):
 
-    try:
-        print(f'Try to download video: {youtube_link}')
-        yt_obj = YouTube(youtube_link)
-        filters = yt_obj.streams.filter(progressive=True, file_extension='mp4').get_highest_resolution()
-    except exceptions.VideoUnavailable:
-        print(f'Video {youtube_link} is unavaialable, skipping.')
-        addNewFiles.write(f"{youtube_id}\n")
-        return 0
-    except KeyError as e:
-        print(e)
-        addNewFiles.write(f"{youtube_id}\n")
-        return 0
-    else:
-        out_file = filters.download(filename = 'temp_download_video.mp4')
-        print(f'outfile: {out_file}')
-        print(f'start_time {start_segment} to {end_segment}')
-        cmd = f"ffmpeg -i temp_download_video.mp4 -ss {start_segment} -to {end_segment} temp.mp4"
-        os.system(cmd)
-        os.remove(f'temp_download_video.mp4')
-        cnt = 0
-        new_name = str(cnt).zfill(5) + '.mp4'
-        while os.path.exists(os.path.join(output_id,  new_name)):
-            cnt += 1
-            new_name = str(cnt).zfill(5) + '.mp4'
+#     try:
+#         print(f'Try to download video: {youtube_link}')
+#         yt_obj = YouTube(youtube_link)
+#         filters = yt_obj.streams.filter(progressive=True, file_extension='mp4').get_highest_resolution()
+#     except exceptions.VideoUnavailable:
+#         print(f'Video {youtube_link} is unavaialable, skipping.')
+#         addNewFiles.write(f"{youtube_id}\n")
+#         return 0
+#     except KeyError as e:
+#         print(e)
+#         addNewFiles.write(f"{youtube_id}\n")
+#         return 0
+#     else:
+#         out_file = filters.download(filename = 'temp_download_video.mp4')
+#         print(f'outfile: {out_file}')
+#         print(f'start_time {start_segment} to {end_segment}')
+#         cmd = f"ffmpeg -i temp_download_video.mp4 -ss {start_segment} -to {end_segment} temp.mp4"
+#         os.system(cmd)
+#         os.remove(f'temp_download_video.mp4')
+#         cnt = 0
+#         new_name = str(cnt).zfill(5) + '.mp4'
+#         while os.path.exists(os.path.join(output_id,  new_name)):
+#             cnt += 1
+#             new_name = str(cnt).zfill(5) + '.mp4'
         
-        print(f"Move file temp.mp4 to {os.path.join(output_id, new_name)}")
-        shutil.move('temp.mp4', os.path.join(output_id, new_name))
+#         print(f"Move file temp.mp4 to {os.path.join(output_id, new_name)}")
+#         shutil.move('temp.mp4', os.path.join(output_id, new_name))
 
-        print("Video Downloaded Successfully")
-    addNewFiles.write(f"{youtube_id}\n")
-    return 1
+#         print("Video Downloaded Successfully")
+#     addNewFiles.write(f"{youtube_id}\n")
+#     return 1
 
 
 videos = []
@@ -76,7 +76,7 @@ noOfThreads = 50
 with open(f"{dataset_file}", "r") as f:
     reader = csv.reader(f, delimiter="\t")
     
-    list = reader.values.tolist()
+    list = list(reader)
     n = len(list)
 
     seperateList = devideArrayIntoChunks(list, n)
