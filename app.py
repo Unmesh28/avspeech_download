@@ -20,8 +20,10 @@ def devideArrayIntoChunks(lst, n) :
         yield lst[i:i + n]
 
 def downloadVideos(arr):
-    youtube_id, start_segment, end_segment, x, y = arr[0].split(",")
-    print(youtube_id)
+    for ar in arr:
+        youtube_id, start_segment, end_segment, x, y = ar[0].split(",")
+        print(youtube_id)
+    
             
 # def downloadYouTube(youtube_link, youtube_id, path, start_segment, end_segment, downloadedYoutubeID):
 
