@@ -66,7 +66,7 @@ def downloadYouTube(youtube_link, youtube_id, path, start_segment, end_segment, 
     #     os.system(cmd)
     #     os.remove(f'temp_download_video.mp4')
     #     cnt = 0
-    #     new_name = str(cnt).zfill(5) + '.mp4'
+    #     new_name = str(cnt).zfill(5) + '.mp4
     #     while os.path.exists(os.path.join(path,  new_name)):
     #         cnt += 1
     #         new_name = str(cnt).zfill(5) + '.mp4'
@@ -99,7 +99,7 @@ with open(f"{dataset_file}", "r") as f:
     reader = csv.reader(f, delimiter="\t")
     
     list = list(reader)
-    n = 100
+    n = 10
 
     seperateList = devideArrayIntoChunks(list, n)
     threads = []
